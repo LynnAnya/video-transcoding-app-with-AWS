@@ -1,0 +1,23 @@
+
+services:
+  user-service:
+    build: ./user-service
+    ports:
+      - "8000:3000"
+    env_file:
+      - ./user-service/.env
+    networks:
+      - assign3-network
+
+  video-service:
+    build: ./video-service
+    ports:
+      - "8001:3001"
+    env_file:
+      - ./video-service/.env
+    networks:
+      - assign3-network
+
+networks:
+  assign3-network:
+    driver: bridge

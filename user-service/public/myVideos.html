@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <title>My Vidoes</title>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg">
+            <div class="container-fluid">
+                <a class="navbar-brand logo-main" href="/index.html">⬇️ YCD</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav ms-auto">
+                        <!-- Dropdown Menu -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
+
+                                <span id="username-display">Username</span>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="/myAccount.html">My Account</a></li>
+                                <li><a class="dropdown-item" href="#">My Videos</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#" onclick="logout()">Log Out</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <section class="container">
+        <div class="account-content">
+            <h2 class="h2-main">My Videos</h2>
+            <div class="account-info">
+                <div class="user-video-management" id="user-video">
+                    <div id="no-videos-msg"></div>
+                    <table class="table table-bordered user-video-table">
+                        <thead>
+                            <tr>
+                                <th>Thumbnail</th>
+                                <th>Title</th>
+                                <th>Youtube Link</th>
+                                <th>Duration</th>
+                                <th>type</th>
+                                <th>quality</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Videos will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
+        integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
+        crossorigin="anonymous"></script>
+    <script src="background.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            const username = localStorage.getItem('username');
+            const email = localStorage.getItem('email');
+
+            if (isLoggedIn === 'true' && username) {
+                document.getElementById('username-display').textContent = username;
+                viewUserVideos(username);
+            } else {
+                window.location.href = './login.html';
+            }
+        });
+        async function viewUserVideos(username) {
+            try {
+                const response = await fetch(`/videos/${username}`);
+                if (!response.ok) {
+                    throw new Error(`Failed to fetch videos for user: ${username}`);
+                }
+
+                const videos = await response.json();
+                const videoTableBody = document.getElementById('table-body');
+                const videoManagementSection = document.getElementById('user-video');
+                const noVideosMessage = document.getElementById('no-videos-msg');
+
+                videoTableBody.innerHTML = '';
+                if (videos.length === 0) {
+                    // No videos 
+                    noVideosMessage.style.display = 'block';
+                    videoManagementSection.style.display = 'none'; 
+                } else {
+                    noVideosMessage.style.display = 'none'; 
+                    videoManagementSection.style.display = 'block'; 
+
+                    videos.forEach(video => {
+                        const row = document.createElement('tr');
+                        // Thumbnail
+                        const thumbnailCell = document.createElement('td');
+                        const thumbnailImg = document.createElement('img');
+                        thumbnailImg.src = video.thumbnail;
+                        thumbnailImg.alt = 'Video Thumbnail';
+                        thumbnailImg.style.width = '100px';
+                        thumbnailCell.appendChild(thumbnailImg);
+                        row.appendChild(thumbnailCell);
+
+                        // Title
+                        const titleCell = document.createElement('td');
+                        titleCell.textContent = video.title || 'N/A';
+                        row.appendChild(titleCell);
+
+                        // YouTube Link
+                        const youtubeLinkCell = document.createElement('td');
+                        const youtubeLink = document.createElement('a');
+                        youtubeLink.href = video.youtubeLink;
+                        youtubeLink.textContent = 'Watch Video';
+                        youtubeLink.target = '_blank';
+                        youtubeLinkCell.appendChild(youtubeLink);
+                        row.appendChild(youtubeLinkCell);
+
+                        // Duration
+                        const durationCell = document.createElement('td');
+                        durationCell.textContent = video.duration || 'N/A';
+                        row.appendChild(durationCell);
+
+                        // Type
+                        const typeCell = document.createElement('td');
+                        typeCell.textContent = video.type || 'N/A';
+                        row.appendChild(typeCell);
+
+                        // Quality
+                        const qualityCell = document.createElement('td');
+                        qualityCell.textContent = video.quality || 'N/A';
+                        row.appendChild(qualityCell);
+
+                        videoTableBody.appendChild(row);
+                    });
+                }
+            } catch (err) {
+                console.error('Error viewing videos for user:', username, err);
+                const videoTableBody = document.getElementById('table-body');
+                videoTableBody.innerHTML = `<tr><td colspan="7" class="text-center">Error loading video data. Please try again later.</td></tr>`;
+            }
+        }
+
+
+        function logout() {
+            localStorage.removeItem('username');
+            localStorage.removeItem('email');
+            localStorage.removeItem('isLoggedIn');
+            const container = document.querySelector('.container');
+            container.style.backgroundColor = '#4070f4';
+            fetch('/logout', { method: 'POST' })
+                .then(response => {
+                    if (response.ok) {
+                        document.body.style.backgroundColor = '#4070f4';
+                        window.location.href = "login.html";
+                    } else {
+                        console.error('Failed to log out');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error during logout:', error);
+                    alert('An error occurred. Please try again.');
+                });
+        }
+    </script>
+</body>
+
+</html>

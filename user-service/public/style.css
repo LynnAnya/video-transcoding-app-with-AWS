@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.h2-main {
+    
+    transition: all 0.3s ease; /* Optional smooth transition */
+}
+
+.h2-main-expanded {
+    margin-top: 13%;
+    margin-bottom: 0; /* Add space for new content */
+}
+
+
+.container{
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: #4070f4;
+    column-gap: 30px;
+    
+}
+.form{
+    position: absolute;
+    max-width: 430px;
+    width: 100%;
+    padding: 30px;
+    border-radius: 6px;
+    background: #FFF;
+}
+.form.signup{
+    opacity: 1;
+}
+.forms.show-signup .form.signup{
+    opacity: 1;
+    pointer-events: auto;
+}
+.forms.show-signup .form.login{
+    opacity: 0;
+}
+header{
+    font-size: 28px;
+    font-weight: 600;
+    color: #232836;
+    text-align: center;
+}
+form{
+    margin-top: 30px;
+}
+.form .field{
+    position: relative;
+    height: 50px;
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 6px;
+}
+.field input,
+.field button{
+    height: 100%;
+    width: 100%;
+    border: none;
+    font-size: 16px;
+    font-weight: 400;
+    border-radius: 6px;
+}
+.field input{
+    outline: none;
+    padding: 0 15px;
+    border: 1px solid#CACACA;
+}
+.field input:focus{
+    border-bottom-width: 2px;
+}
+.eye-icon{
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #8b8b8b;
+    cursor: pointer;
+    padding: 5px;
+}
+.field button{
+    color: #fff;
+    background-color: #0171d3;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+.field button:hover{
+    background-color: #016dcb;
+}
+.form-link{
+    text-align: center;
+    margin-top: 10px;
+}
+.form-link span,
+.form-link a{
+    font-size: 14px;
+    font-weight: 400;
+    color: #232836;
+}
+.form a{
+    color: #0171d3;
+    text-decoration: none;
+}
+.form-content a:hover{
+    text-decoration: underline;
+}
+.navbar {   
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0 1px 0;
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2);
+    padding-right: 20px;  
+}
+
+#username-display {
+    font-size: 16px; /* Adjust the size */
+    
+    padding: 5px 10px; /* Inner spacing */
+    border-radius: 5px; /* Rounded corners */
+    background-color: #f8f9fa; /* Background color */
+}
+.logo-main {
+    margin-left: 1.5%;
+    cursor: pointer;  
+}
+
+.nav-link.dropdown-toggle {
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.navbar-nav .dropdown-menu {
+    border-radius: 5px;
+    border: none;
+}
+
+#progress-vdo {
+    font-style: italic;
+    font-weight: bold;
+    font-size: 24px;
+    color: #4070f4;
+}
+
+
+/**
+.logout-btn {
+    transition: all 0.3s ease ;
+    cursor: pointer;
+    height: 100%;
+    font-size: 20px;  
+    border-radius: 20px;
+    border: 1px solid black;
+    margin-left: auto;
+    padding: 5px 18px;
+} 
+
+.logout-btn:hover {
+    color: #fff;
+    background-color: black;
+} **/
+
+.vdo-content, .account-content{
+    max-width: 70%;
+    width: 100%;
+    padding: 30px;
+    border-radius: 6px;
+    background-color: #FFF ;
+}
+
+#search-box {
+    outline: none;
+    padding: 8px 15px;
+    border: 1px solid #CACACA;
+    border-radius: 6px;
+    height: 100%;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 400;
+}
+
+.vdo-detail {
+    display: flex;  
+}
+#thumbnail {
+    margin-right: 10%;
+}
+
+#thumbnail {
+    width: 200px;
+}
+
+/* Table styling */
+#video-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    display: none;
+}
+
+th, td {
+    border: 1px solid #CACACA; /* Match the input border color */
+    padding: 12px; /* Consistent padding */
+    text-align: center;
+}
+
+th {
+    background-color: #f2f2f2; /* Light grey for headers */
+    font-weight: 600; /* Bold headers */
+    color: #232836; /* Dark text for headers */
+}
+
+td {
+    background-color: #fff; /* White background for cells */
+}
+
+.download-btn {
+    height: 40px; /* Set a consistent button height */
+    color: #fff;
+    background-color: #4070f4; /* Match existing button color */
+    border: none;
+    border-radius: 6px; /* Match input fields */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 7px;
+}
+
+button:hover {
+    background-color: #016dcb; /* Darker shade on hover */
+}
+
+#progress-vdo {
+    margin: 15px;
+}
+
+/* admin section*/
+
+.container-admin{
+    
+
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.h3-subhead{
+    margin-bottom: 5%;
+}
+
+.admin-center{
+    margin-bottom: 2%;
+}
+
+.user-management-table td, 
+.user-management-table th,
+.user-video-table td, 
+.user-video-table th {
+    border: none;
+    padding: 15px; 
+}
+
+#user-video-management, #user-video {
+    display: none;
+}
+
+/** account */
+
+b {
+    font-weight: bold;
+}
+
+
+@media screen and (max-width: 400px) {
+    .form{
+        padding: 20px 10px;
+    }   
+}
