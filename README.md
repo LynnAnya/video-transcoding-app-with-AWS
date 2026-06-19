@@ -6,7 +6,7 @@ application successfully. Video can be transcoded to the required format such as
 
 ## App Architecture
 
-![Architecture Diagram](image/app_architecture.png)
+![Architecture Diagram](images/app_architecture.png)
 
 
 ### Archiecture Overview
