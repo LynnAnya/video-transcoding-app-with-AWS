@@ -56,4 +56,4 @@ messages after the task is done.
 It is one of the porjects that I am very proud of, because people (esp. beginner) saying it is very hard, some people kind of gave up and asked others to help a lots. 
 However, I was spending 7 days to do this thing (AWS part) from midday to midnight relentlessly on my own, and I eventually did it. 
 It is pretty incredible for me learning cloud computing and going inside cloud service.
-It's good learning, the teaching seemed not hard but the real work on the cloud needs time but I'm happy that I understand things so quickly.
+It's good learning, the teaching seemed not hard but the real work on the cloud needs time. I'm happy that I understand things so quickly.
