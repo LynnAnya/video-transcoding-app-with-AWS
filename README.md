@@ -52,8 +52,6 @@ messages after the task is done.
 ![Admin Page](images/admin_page.png)
 
 
-
-
 ##Reflection
 It is one of the porjects that I am very proud of, because people (esp. beginner) saying it is very hard, some people kind of gave up and asked others to help a lots. 
 However, I was spending 7 days to do this thing (AWS part) from midday to midnight relentlessly on my own, and I eventually did it. 
