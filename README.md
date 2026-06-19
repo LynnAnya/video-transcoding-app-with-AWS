@@ -1,15 +1,15 @@
-#Video Transcoding WebApp using AWS
+# Video Transcoding WebApp using AWS
 
-##Overview
+## Overview
 The application transcodes a video uploaded by a user who registers and logins to the
 application successfully. Video can be transcoded to the required format such as 720 mp4, 720 webm and so on. Admin can view and delete user's data and user's videos
 
-##App Architecture
+## App Architecture
 
 ![Architecture Diagram](image/app_architecture.png)
 
 
-###Archiecture Overview
+### Archiecture Overview
 - I used a choreography approach in this architecture, because it is suitable for its workflow and complexity.
 - I decided to have 2 microservices: User service and Video service to respond to core business functions.
 - **User Service:** handles public facing, user management, user authentication and user video uploading to S3.
@@ -27,20 +27,20 @@ messages after the task is done.
 - **Target Group** listen on port: 300 which is user-service.
 
 
-##Features
+## Features
 - **2 Microservices**
 - **Asynchronous processing**
 - **Dockerized services**
 - **Cloud‑ready architecture**
 
 
-##Tech Stack
+## Tech Stack
 - **Frontend:** HTML, CSS, React, Javascript 
 - **Backend:** Node.js
 - **Container:** Docker
 - **AWS:** ECS, ECR, S3, SQS, ALB, Dynamo DB, Cognito, Parameter store, DNS, Target Group, API Gateway
 
-##Screenshots
+## Screenshots
 
 ### Login Page
 ![Login Page](images/login_page.png)
@@ -52,7 +52,7 @@ messages after the task is done.
 ![Admin Page](images/admin_page.png)
 
 
-##Reflection
+## Reflection
 It is one of the porjects that I am very proud of, because people (esp. beginner) saying it is very hard, some people kind of gave up and asked others to help a lots. 
 However, I was spending 7 days to do this thing (AWS part) from midday to midnight relentlessly on my own, and I eventually did it. 
 It is pretty incredible for me learning cloud computing and going inside cloud service.
